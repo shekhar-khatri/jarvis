@@ -1,0 +1,16 @@
+#!/usr/bin/python3
+
+import speech_recognition as sr
+
+#Record Audio
+r = sr.Recognizer()
+with sr.Microphone() as source:
+	print("Say something.")
+	audio = r.listen(source)
+
+try:
+	print("You said: " + r.recognize_google(audio))
+except sr.UnknownValueError:
+	print("Jarvis could not understand you.")
+except sr.RequestError as e:
+	print("Could not connect to internet.")
